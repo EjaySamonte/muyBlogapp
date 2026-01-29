@@ -1,0 +1,54 @@
+.headblog {
+    display: flex;
+    padding-top: 5rem;
+}
+
+.createBlogSection {
+    margin: 5rem auto;
+    padding: 2rem;
+    background: var(--second-bg-color);
+    border-radius: 1rem;
+    color: var(--text-color);
+}
+
+.createBlogSection h2 {
+    margin-bottom: 1rem;
+}
+
+.createBlogForm {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.createBlogForm input, .createBlogForm textarea {
+    padding: 0.8rem;
+    border-radius: 0.5rem;
+    border: none;
+    font-size: 1rem;
+}
+
+.createBlogForm textarea {
+    height: 40rem;
+    width: 75rem;
+    resize: none;
+}
+
+.createBlogForm button {
+    padding: 0.8rem;
+    background-color: var(--main-color);
+    color:#000;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+}
+
+.errorMessage {
+    color: red;
+    margin-top: 1rem;
+}
+
+.successMessage {
+    color: lime;
+    margin-top: 1rem;
+}

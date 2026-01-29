@@ -1,0 +1,181 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Happy+Monkey&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap'); */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    border: none;
+    outline: none;
+    scroll-behavior: smooth;
+    font-family: 'Poppins',sans-serif;
+}
+
+:root {
+    --bg-color: #1f242d;
+    --second-bg-color: #323946;
+    --text-color: #fff;
+    --main-color: #0ef;
+}
+
+.thisbody {
+    background: var(--bg-color);
+    color: var(--text-color);
+}
+
+section {
+    min-height: 100vh;
+    padding: 10rem 9% 2rem;
+    color: var(--text-color);
+}
+
+.dashboardhome {
+    cursor: pointer;
+}
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 2rem 9%;
+    background: #323946;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+}
+.navbar a {
+    font-size: 1.7rem;
+    color: var(--text-color);
+    margin-left: 4rem;
+    transition: 0.3s;
+}
+.navbar a:hover, .navbar a.active {
+    color: var(--main-color);
+}
+.navbar i {
+    font-size: 2.5rem;
+    color: var(--text-color);
+    margin-left: 3rem;
+    transition: 0.3s;
+}
+.profileMenu {
+    position: relative;
+    display: inline-block;
+}
+.profileIcon {
+    font-size: 2rem;
+    cursor: pointer;
+    color: var(--text-color);
+}
+
+.dropdown {
+    position: absolute;
+    top: 2.5rem;
+    right: -8rem;
+    background: var(--second-bg-color);
+    border-radius: 0.5rem;
+    list-style: none;
+    padding: 0.2rem 0;
+    min-width: 10rem;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+.dropdown li {
+    padding: 0.5rem 1rem;
+    color: var(--text-color);
+    cursor: pointer;
+    transition: background 0.2s;
+    font-size: 1rem;
+}
+
+.dropdown li:hover {
+    background: var(--main-color);
+    color: #000;
+}
+
+.home {
+    display: flex;
+    justify-content: center;
+}
+
+.home-content h3 {
+    font-size: 3.2rem;
+    font-weight: 700;
+}
+
+.headingblog {
+    padding: 2rem;
+}
+
+.bloglist {
+    position: relative;
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fill, minmax(30rem, 1fr));
+}
+
+.blogCard {
+    background: var(--second-bg-color);
+    padding: 1rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+    z-index: 1;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-width: 40rem;
+}
+
+.blogImage {
+    width: 100%;
+    height: 15rem;
+    object-fit: cover;
+    border-radius: 0.5rem;
+}
+
+.blogImagePlaceholder {
+    width: 100%;
+    height: 100%;
+    background-color: #333;
+    color: #ccc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.5rem;
+    font-style: italic;
+}
+
+.blogTitle {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    max-width: 100%;
+}
+
+.blogDate {
+    font-size: 0.8rem;
+    color: gray;
+}
+
+.blogContent {
+    margin: 0.5rem 0;
+    max-width: 100%;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+.viewblogbutton {
+    position: absolute;
+    display: inline-block;
+    bottom: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #0ef;
+}

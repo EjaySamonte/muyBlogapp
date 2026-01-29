@@ -1,0 +1,61 @@
+.editBlogHeader {
+    display: flex;
+    padding-top: 5rem;
+}
+
+.editBlog {
+    margin: 5rem auto;
+    padding: 2rem;
+    background: var(--second-bg-color);
+    border-radius: 1rem;
+    color: var(--text-color);
+}
+
+.editBlogForm {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.editBlogForm input , .editBlogForm textarea {
+    padding: 0.8rem;
+    border-radius: 0.5rem;
+    border: none;
+    font-size: 1rem;
+}
+
+.editBlogForm textarea {
+    height: 40rem;
+    width: 75rem;
+    resize: none;
+}
+
+.editBlogForm button {
+    padding: 0.8rem;
+    background-color: var(--main-color);
+    color:#000;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+}
+
+.backButton {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    background: none;
+    border: none;
+    color: #333;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.errorMessage {
+    color: red;
+    margin-top: 1rem;
+}
+
+.successMessage {
+    color: lime;
+    margin-top: 1rem;
+}

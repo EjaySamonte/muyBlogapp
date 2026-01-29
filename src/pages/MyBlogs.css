@@ -1,0 +1,97 @@
+.myBlogsHeader {
+    background: var(--bg-color);
+    color: var(--text-color);
+    display: flex;
+    justify-content: center;
+}
+
+.myBlogsPage {
+    min-height: 100vh;
+    padding: 10rem 9% 2rem;
+    color: var(--text-color);
+}
+
+.myBlogsPage h2 {
+    font-size: 3.2rem;
+    font-weight: 700;
+    padding-bottom: 2rem;
+}
+
+.bloglists {
+    position: relative;
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fill, minmax(30rem, 1fr));
+}
+
+.blogCard {
+    background: var(--second-bg-color);
+    padding: 1rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+    z-index: 1;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-width: 40rem;
+}
+
+.blogImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 0.5rem;
+}
+
+.blogImagePlaceholder {
+    width: 100%;
+    height: 100%;
+    background-color: #333;
+    color: #ccc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.5rem;
+    font-style: italic;
+}
+
+.blogContent {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.blogTitle {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    max-width: 100%;
+}
+
+.blogDate {
+    font-size: 0.8rem;
+    color: gray;
+}
+
+.blogSnippet {
+    margin: 0.5rem 0;
+    max-width: 100%;
+}
+
+.btn {
+    cursor: pointer;
+}
+
+.btn {
+    position: relative;
+    padding: 0.8rem;
+    background-color: var(--main-color);
+    color:#000;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    margin-right: 2rem;
+}

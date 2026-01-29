@@ -1,0 +1,101 @@
+.viewBlogHeader {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    padding-top: 10rem;
+    background: var(--bg-color);
+}
+
+.viewBlogPage {
+    max-width: 800px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 2rem;
+    background: var(--second-bg-color);
+    border-radius: 0.5rem;
+    color: var(--text-color);
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.3);
+}
+
+.blogImage {
+    width: 100%;
+    height: auto;
+    margin: 1rem 0;
+    border-radius: 0.5rem;
+}
+
+.noBlogImage {
+    width: 100%;
+    height: 15rem;
+    background-color: #333;
+    border-radius: 0.5rem;
+    margin-bottom: 1rem;
+    color: #aaa;
+    text-align: center;
+    padding-top: 6rem;
+    font-style: italic;
+}
+
+.blogContent {
+    margin-top: 1rem;
+    line-height: 1.6;
+    font-size: 1rem;
+}
+
+.commentBox {
+    max-width: 800px;
+    width: 100%;
+    background: var(--second-bg-color);
+    padding: 1rem;
+    border-radius: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.commentBox textarea {
+    padding: 0.8rem;
+    border-radius: 0.5rem;
+    resize: none;
+    font-size: 1rem;
+    background: #222;
+    color: #fff;
+    border: 1px solid #555;
+}
+
+.commentBox button {
+    align-self: flex-start;
+    background: var(--main-color);
+    color: #000;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 0.3rem;
+    cursor: pointer;
+}
+
+.commentBox .commentList {
+        max-width: 100%;
+        width: 100%;
+}
+
+.commentList {
+    max-width: 800px;
+    width: 100%;
+    background: var(--second-bg-color);
+    padding: 1rem;
+    border-radius: 0.5rem;
+    margin-top: 1rem;
+}
+
+.commentItem {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid #444;
+    padding-bottom: 0.5rem;
+}
+
+.commentDate {
+    font-size: 0.8rem;
+    color: gray;
+}
