@@ -1,18 +1,18 @@
 import React from "react";
 import { Outlet, useNavigate } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
-import { RootState } from "../app/store";
-import { clearUser } from "../features/auth/authSlice";
+// import { useSelector, useDispatch } from "react-redux";
+// import { RootState } from "../app/store";
+// import { clearUser } from "../features/auth/authSlice";
 import { logoutUser } from "../features/auth/authService";
 import '../pages/HomeDashboard.css';
 
 export default function Header() {
     const navigate = useNavigate();
-    const dispatch = useDispatch();
+    // const dispatch = useDispatch();
     const [open, setOpen] = React.useState(false);
     const dropdown = React.useRef<HTMLDivElement>(null);
 
-    const user = useSelector((state: RootState) => state.auth.user);
+    // const user = useSelector((state: RootState) => state.auth.user);
 
     const isLogout = async () => {
             const success = await logoutUser();
@@ -41,7 +41,7 @@ export default function Header() {
             <header className="header">
                 <i className='bxr bx-menu' id="menu-icon"></i>
                 <nav className="navbar">
-                    <a onClick={() => navigate('/dashboard')} className="dashboardhome">Home</a>
+                    <i onClick={() => navigate('/dashboard')} className="dashboardhome">Home</i>
                     {/* <a href="about">About</a> */}
                     <div className="profileMenu" ref={dropdown}><i className="fas fa-user-circle profileIcon" onClick={() => setOpen(!open)}></i>
                     {open && (
