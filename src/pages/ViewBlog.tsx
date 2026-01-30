@@ -78,7 +78,7 @@ export default function ViewBlog() {
 
         fetchBlog();
         fetchComments(); // you can see all the comments
-    }, [id]);
+    }, [fetchComments]);
 
     if (loading) return <p>Please wait...</p>;
     if (error) return <p className="errorMessage">{error}</p>;

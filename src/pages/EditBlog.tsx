@@ -7,7 +7,7 @@ export default function EditBlog() {
     const { id } = useParams();
     console.log("Editlog ID:", id)
     const navigate = useNavigate();
-    const [error, setError] = useState<string | null>(null);
+    const [, setError] = useState<string | null>(null);
     const [title, setTitle] = useState("");
     const [content, setContent] = useState ("");
 

@@ -10,7 +10,7 @@ export default function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState<string | null>(null); // when there is an error it update as string
-  const [shake, setShake] = useState(false);
+  const [_shake, setShake] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate(); // it will goes to another page!
 
