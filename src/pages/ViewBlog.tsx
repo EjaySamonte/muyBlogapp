@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import { useParams } from "react-router-dom";
 import { supabase } from "../supabase/client";
 import "./ViewBlog.css";
@@ -17,7 +17,7 @@ export default function ViewBlog() {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
 
-    const fetchComments = async () => {
+    const fetchComments = useCallback(async () => {
         const { data, error } = await supabase
         .from("comments")
         .select("content, created_at, display_name")
@@ -29,16 +29,17 @@ export default function ViewBlog() {
         setComments([]);
         } else {
         setComments(data as Comment[]);
-        console.log("Fetched comments", data)
+        console.log("Fetched comments", data);
         }
-    };
+    }, [id]);
 
     const handleCommentSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
 
         const { data: userData, error: userError } = await supabase.auth.getUser();
         const user = userData?.user;
-        const displayName = `${user?.user_metadata?.first_name ?? ""}`.trim() || "Anonymous";
+        const displayName =
+        `${user?.user_metadata?.first_name ?? ""}`.trim() || "Anonymous";
 
         if (userError || !user) {
         setError("You must be logged in to comment.");
@@ -47,21 +48,26 @@ export default function ViewBlog() {
 
         const { error: insertError } = await supabase
         .from("comments")
-        .insert([{ blog_id: id, content: commentText, author_id: user.id, display_name: displayName }]);
+        .insert([
+            {
+            blog_id: id,
+            content: commentText,
+            author_id: user.id,
+            display_name: displayName,
+            },
+        ]);
 
         if (insertError) {
         setError("Failed to post comment.");
         } else {
         setCommentText("");
-        await fetchComments(); // after you post a comment, it will display
+        await fetchComments(); // refresh comments after posting
         }
     };
 
     useEffect(() => {
         const fetchBlog = async () => {
         setLoading(true);
-        // const { data: userData } = await supabase.auth.getUser();
-        // const user = userData?.user;
         const { data, error } = await supabase
             .from("blogs")
             .select("*")
@@ -77,8 +83,8 @@ export default function ViewBlog() {
         };
 
         fetchBlog();
-        fetchComments(); // you can see all the comments
-    }, [id]);
+        fetchComments(); // ✅ now safe in dependency array
+    }, [fetchComments]);
 
     if (loading) return <p>Please wait...</p>;
     if (error) return <p className="errorMessage">{error}</p>;
@@ -86,48 +92,52 @@ export default function ViewBlog() {
 
     return (
         <div className="viewBlogHeader">
-            <div className="viewBlogPage">
-                <h2>{blog.title}</h2>
-                <p className="blogDate">
-                {new Date(blog.created_at).toLocaleDateString("en-US", {
-                    month: "short",
-                    day: "numeric",
-                    year: "numeric",
-                    hour: "2-digit",
-                    minute: "2-digit",
-                })}
+        <div className="viewBlogPage">
+            <h2>{blog.title}</h2>
+            <p className="blogDate">
+            {new Date(blog.created_at).toLocaleDateString("en-US", {
+                month: "short",
+                day: "numeric",
+                year: "numeric",
+                hour: "2-digit",
+                minute: "2-digit",
+            })}
+            </p>
+            {blog.image_url ? (
+            <img src={blog.image_url} alt={blog.title} className="blogImage" />
+            ) : (
+            <div className="noBlogImage"></div>
+            )}
+            <p className="blogContent">{blog.content}</p>
+        </div>
+
+        <form onSubmit={handleCommentSubmit} className="commentBox">
+            <textarea
+            value={commentText}
+            onChange={(e) => setCommentText(e.target.value)}
+            placeholder="Write your comment..."
+            required
+            />
+            <button type="submit">Post a comment</button>
+        </form>
+
+        <div className="commentList">
+            <h3>Comments</h3>
+            {comments.length === 0 ? (
+            <p>No comments yet.</p>
+            ) : (
+            comments.map((comment, index) => (
+                <div key={index} className="commentItem">
+                <p>
+                    <strong>{comment.display_name}</strong>: {comment.content}
                 </p>
-                {blog.image_url ? (
-                <img src={blog.image_url} alt={blog.title} className="blogImage" />
-                ) : (
-                <div className="noBlogImage"></div>
-                )}
-                <p className="blogContent">{blog.content}</p>
-            </div>
-            <form onSubmit={handleCommentSubmit} className="commentBox">
-                <textarea
-                value={commentText}
-                onChange={(e) => setCommentText(e.target.value)}
-                placeholder="Write your comment..."
-                required
-                />
-                <button type="submit">Post a comment</button>
-            </form>
-            <div className="commentList">
-                <h3>Comments</h3>
-                {comments.length === 0 ? (
-                <p>No comments yet.</p>
-                ) : (
-                comments.map((comment, index) => (
-                    <div key={index} className="commentItem">
-                    <p><strong>{comment.display_name}</strong>: {comment.content}</p>
-                    <span className="commentDate">
-                        {new Date(comment.created_at).toLocaleString()}
-                    </span>
-                    </div>
-                    ))
-                )}
-            </div>
+                <span className="commentDate">
+                    {new Date(comment.created_at).toLocaleString()}
+                </span>
+                </div>
+            ))
+            )}
+        </div>
         </div>
     );
 }
