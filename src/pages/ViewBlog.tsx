@@ -83,8 +83,8 @@ export default function ViewBlog() {
         };
 
         fetchBlog();
-        fetchComments(); // ✅ now safe in dependency array
-    }, [fetchComments]);
+        fetchComments();
+    }, [id, fetchComments]);
 
     if (loading) return <p>Please wait...</p>;
     if (error) return <p className="errorMessage">{error}</p>;
