@@ -60,8 +60,8 @@ export default function ViewBlog() {
     useEffect(() => {
         const fetchBlog = async () => {
         setLoading(true);
-        const { data: userData } = await supabase.auth.getUser();
-        const user = userData?.user;
+        // const { data: userData } = await supabase.auth.getUser();
+        // const user = userData?.user;
         const { data, error } = await supabase
             .from("blogs")
             .select("*")
@@ -78,7 +78,7 @@ export default function ViewBlog() {
 
         fetchBlog();
         fetchComments(); // you can see all the comments
-    }, [fetchComments]);
+    }, [id]);
 
     if (loading) return <p>Please wait...</p>;
     if (error) return <p className="errorMessage">{error}</p>;
