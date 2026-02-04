@@ -2,7 +2,6 @@ import React, { useEffect, useState} from "react";
 import { supabase } from "../supabase/client";
 import { useNavigate, useParams } from "react-router-dom";
 import './EditBlog.css';
-import { upload } from "@testing-library/user-event/dist/upload";
 
 export default function EditBlog() {
     const { id } = useParams();
