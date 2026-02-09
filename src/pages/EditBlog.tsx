@@ -11,6 +11,7 @@ export default function EditBlog() {
     const [title, setTitle] = useState("");
     const [content, setContent] = useState ("");
     const [imageFile, setImageFile] = useState<File | null>(null);
+    const [removeImage, setRemoveImage] = useState(false);
     
 
     useEffect(() => {
@@ -46,12 +47,15 @@ export default function EditBlog() {
             const {data} = supabase.storage.from("blog-images").getPublicUrl(fileName);
             imageURL = data.publicUrl;
         }
+
+        if(removeImage) {
+            imageURL = null;
+        }
         
         const { error } = await supabase
             .from("blogs")
-            .update({ title, content, ...(imageURL ? {image_url: imageURL} : {}) })
+            .update({ title, content, ...(imageURL !== null ? { image_url: imageURL } : removeImage ? { image_url: null } : {}),})
             .eq("id", id);
-
         if (error) {
             console.error("Error updating blog:", error.message);
             setError("Failed to update blog.");
@@ -75,6 +79,10 @@ export default function EditBlog() {
                     placeholder="Blog Title" />
                     <textarea value={content} onChange={(e) => setContent(e.target.value)} placeholder="Type here." />
                     <input type="file" accept="image/*" onChange={(e) => setImageFile(e.target.files?.[0] || null)}></input>
+                    <label className="tickedbox">
+                        <p className="ticked-name">Remove Image? </p>
+                        <input type="checkbox" checked={removeImage} onChange={(e) => setRemoveImage(e.target.checked)} />
+                    </label>
                     <button type="submit">Save Changes</button>
                     <button type="button" onClick={handleCancel} className="cancelButton">Cancel</button>
                 </form>

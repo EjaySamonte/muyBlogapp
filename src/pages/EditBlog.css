@@ -59,3 +59,14 @@
     color: lime;
     margin-top: 1rem;
 }
+
+.tickedbox {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+}
+
+.tickedbox input {
+    margin: 0;
+}
