@@ -32,6 +32,11 @@ section {
 .dashboardhome {
     cursor: pointer;
 }
+
+i {
+    font-style: normal;
+}
+
 .header {
     position: fixed;
     top: 0;
