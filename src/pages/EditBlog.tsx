@@ -86,7 +86,7 @@ export default function EditBlog() {
                         {previewURL ? (
                         <img src={previewURL} alt="New preview" className="previewImage" />
                         ) : (
-                        imageURL && <img src={imageURL} alt="Current blog image" className="previewImage" />
+                        imageURL && <img src={imageURL} alt="Current blog preview" className="previewImage" />
                         )}
                     </div>
                     )}  
