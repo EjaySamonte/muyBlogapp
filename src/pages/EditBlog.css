@@ -60,19 +60,31 @@
     margin-top: 1rem;
 }
 
-.tickedbox {
+.removeImageButton {
+    position: absolute;
+    top: 1rem;
+    left: 32rem;    
+    background: black;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 2rem;
+    height: 2rem;
+    font-size: 1.25rem;
+    line-height: 1.25rem;
+    cursor: pointer;
     display: flex;
     align-items: center;
-    gap: 0.5rem;
-    cursor: pointer;
+    justify-content: center;
 }
 
-.tickedbox input {
-    margin: 0;
+.removeImageButton:hover {
+    background: rgba(255, 0, 0, 0.8);
 }
 
 .imagePreview {
-    margin: 1rem 0;
+    position: relative;
+    display: inline-block;
 }
 
 .previewImage {

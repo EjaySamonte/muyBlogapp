@@ -84,9 +84,22 @@ export default function EditBlog() {
                     {!removeImage && (
                     <div className="imagePreview">
                         {previewURL ? (
-                        <img src={previewURL} alt="New preview" className="previewImage" />
-                        ) : (
-                        imageURL && <img src={imageURL} alt="Current blog preview" className="previewImage" />
+                            <img src={previewURL} alt="New preview" className="previewImage" />
+                            ) : (
+                            imageURL && <img src={imageURL} alt="Current blog preview" className="previewImage" />
+                        )}
+                        {(previewURL || imageURL) && (
+                            <button
+                                type="button"
+                                className="removeImageButton"
+                                onClick={() => {
+                                setRemoveImage(true);
+                                setPreviewURL(null);
+                                setImageFile(null);
+                                setImageURL(null);
+                                }}>
+                                ×
+                            </button>
                         )}
                     </div>
                     )}  
@@ -95,14 +108,11 @@ export default function EditBlog() {
                         setImageFile(file);
                         if (file) {
                             setPreviewURL(URL.createObjectURL(file));
+                            setRemoveImage(false);
                         } else {
                             setPreviewURL(null);
                         }
                     }}></input>
-                    <label className="tickedbox">
-                        <p className="ticked-name">Remove Image? </p>
-                        <input type="checkbox" checked={removeImage} onChange={(e) => setRemoveImage(e.target.checked)} />
-                    </label>
                     <button type="submit">Save Changes</button>
                     <button type="button" onClick={handleCancel} className="cancelButton">Cancel</button>
                 </form>
