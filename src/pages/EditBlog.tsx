@@ -12,6 +12,8 @@ export default function EditBlog() {
     const [content, setContent] = useState ("");
     const [imageFile, setImageFile] = useState<File | null>(null);
     const [removeImage, setRemoveImage] = useState(false);
+    const [imageURL, setImageURL] = useState<string | null>(null);
+    const [previewURL, setPreviewURL] = useState<string | null>(null);
     
 
     useEffect(() => {
@@ -25,6 +27,7 @@ export default function EditBlog() {
             if (!error && data) {
                 setTitle(data.title);
                 setContent(data.content);
+                setImageURL(data.image_url);
             }
         };
         fetchBlog();
@@ -78,7 +81,24 @@ export default function EditBlog() {
                     <input type="text" value={title} onChange={(e) => setTitle(e.target.value)}
                     placeholder="Blog Title" />
                     <textarea value={content} onChange={(e) => setContent(e.target.value)} placeholder="Type here." />
-                    <input type="file" accept="image/*" onChange={(e) => setImageFile(e.target.files?.[0] || null)}></input>
+                    {!removeImage && (
+                    <div className="imagePreview">
+                        {previewURL ? (
+                        <img src={previewURL} alt="New preview" className="previewImage" />
+                        ) : (
+                        imageURL && <img src={imageURL} alt="Current blog image" className="previewImage" />
+                        )}
+                    </div>
+                    )}  
+                    <input type="file" accept="image/*" onChange={(e) => {
+                        const file = e.target.files?.[0] || null;
+                        setImageFile(file);
+                        if (file) {
+                            setPreviewURL(URL.createObjectURL(file));
+                        } else {
+                            setPreviewURL(null);
+                        }
+                    }}></input>
                     <label className="tickedbox">
                         <p className="ticked-name">Remove Image? </p>
                         <input type="checkbox" checked={removeImage} onChange={(e) => setRemoveImage(e.target.checked)} />

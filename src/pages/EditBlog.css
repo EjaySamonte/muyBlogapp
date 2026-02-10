@@ -70,3 +70,13 @@
 .tickedbox input {
     margin: 0;
 }
+
+.imagePreview {
+    margin: 1rem 0;
+}
+
+.previewImage {
+    max-width: 35rem;
+    border-radius: 0.5rem;
+    display: block;
+}
