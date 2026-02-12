@@ -99,3 +99,86 @@
     font-size: 0.8rem;
     color: gray;
 }
+
+.imageShow {
+    position: relative;
+    display: inline-block;
+}
+
+.commentImage {
+    max-width: 100%;
+    height: auto;
+    margin-top: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 0.5rem;
+    display: block;
+}
+
+.commentActions {
+    margin-top: 0.5rem;
+}
+
+.commentActions button {
+    margin-right: 0.5rem;
+    padding: 0.4rem 0.8rem;
+    font-size: 0.8rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.commentActions button:first-child {
+    background-color: #e74c3c;
+    color: #fff;
+}
+
+.commentActions button:first-child:hover {
+    background-color: #c0392b;
+}
+
+.commentActions button:last-child {
+    background-color: #3498db;
+    color: #fff;
+}
+
+.commentActions button:last-child:hover {
+    background-color: #2980b9;
+}
+
+.editCommentForm textarea {
+    width: 100%;
+    min-height: 3.75rem;
+    padding: 0.5rem;
+    font-size: 1rem;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    resize: none;
+}
+
+.editCommentForm button {
+    margin: 0 0.5rem;
+    padding: 0.4rem 0.8rem;
+    font-size: 0.8rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.editCommentForm button[type="submit"] {
+    background-color: #2ecc71;
+    color: #fff;
+}
+
+.editCommentForm button[type="submit"]:hover {
+    background-color: #27ae60;
+}
+
+.editCommentForm button[type="button"] {
+    background-color: #95a5a6;
+    color: #fff;
+}
+
+.editCommentForm button[type="button"]:hover {
+    background-color: #7f8c8d;
+}
