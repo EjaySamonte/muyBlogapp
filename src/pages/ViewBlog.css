@@ -54,16 +54,6 @@
     gap: 0.5rem;
 }
 
-.commentBox textarea {
-    padding: 0.8rem;
-    border-radius: 0.5rem;
-    resize: none;
-    font-size: 1rem;
-    background: #222;
-    color: #fff;
-    border: 1px solid #555;
-}
-
 .commentBox button {
     align-self: flex-start;
     background: var(--main-color);
@@ -72,11 +62,6 @@
     border: none;
     border-radius: 0.3rem;
     cursor: pointer;
-}
-
-.commentBox .commentList {
-        max-width: 100%;
-        width: 100%;
 }
 
 .commentList {
@@ -93,11 +78,14 @@
     margin-bottom: 1rem;
     border-bottom: 1px solid #444;
     padding-bottom: 0.5rem;
+    display: flex;
+    flex-direction: column;
 }
 
 .commentDate {
     font-size: 0.8rem;
     color: gray;
+    padding-top: 0.5rem;
 }
 
 .imageShow {
@@ -105,8 +93,80 @@
     display: inline-block;
 }
 
+.textareaWrapper {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
+
+.textareaWrapper textarea {
+    width: 100%;
+    min-height: 60px;
+    padding: 0.5rem 2rem 0.5rem 0.5rem; /* space for icon */
+    font-size: 1rem;
+    border-radius: 6px;
+    border: 1px solid #555;
+    resize: none;
+    background: #222;
+    color: #fff;
+}
+
+.hiddenFileInput {
+    display: none;
+}
+
+.uploadInside {
+    position: absolute;
+    right: 0.5rem;
+    bottom: 0.5rem;
+    font-size: 1.2rem;
+    cursor: pointer;
+    color: #3498db;
+    transition: color 0.2s ease;
+}
+
+.uploadInside:hover {
+    color: #1d6fa5;
+}
+
+.imagePreviewWrapper {
+    position: relative;
+    display: inline-block;
+    /* margin-top: 0.5rem; */
+    max-width: 200px;
+}
+
+.imagePreviewWrapper img {
+    max-width: 200px;
+    height: auto;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+}
+
+.editButton {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.imagePreviewWrapper .removeImageBtn{
+    position: absolute;
+    top: 10px;
+    right: 4px;
+    background: rgba(0,0,0,0.6);
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 22px;
+    height: 22px;
+    font-size: 14px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .commentImage {
-    max-width: 100%;
+    max-width: 200px;
     height: auto;
     margin-top: 0.5rem;
     border: 1px solid #ddd;
@@ -146,10 +206,11 @@
     background-color: #2980b9;
 }
 
+
 .editCommentForm textarea {
     width: 100%;
     min-height: 3.75rem;
-    padding: 0.5rem;
+    padding: 0.5rem 2rem 0.5rem 0.5rem; /* space for icon */
     font-size: 1rem;
     border-radius: 4px;
     border: 1px solid #ccc;
@@ -157,7 +218,7 @@
 }
 
 .editCommentForm button {
-    margin: 0 0.5rem;
+    margin: 0.5rem 0.5rem;
     padding: 0.4rem 0.8rem;
     font-size: 0.8rem;
     border: none;
